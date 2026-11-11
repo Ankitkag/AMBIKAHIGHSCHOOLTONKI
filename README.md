@@ -157,6 +157,113 @@ To personalize the website with the school's official data when available, searc
 
 ---
 
+## 🔒 Ambika Digital Submission Portal & Secure Admin Dashboard
+
+The website includes a public, mobile-friendly file upload system and protected administrative review dashboard designed to allow students, parents, and community members to submit photos, homework, student projects, and certificates while keeping all submitted files strictly confidential.
+
+### 🌟 Key Security Architecture
+
+1. **Client-Side & Server-Side Binary Magic-Byte Validation**:
+   - Files are validated by their actual binary headers (`Uint8Array`), rejecting spoofed extensions (e.g. executable `.exe` or scripts renamed to `.jpg`).
+   - Allowed formats:
+     - **JPG / JPEG** (`FF D8 FF`) — Maximum 5 MB per image.
+     - **PNG** (`89 50 4E 47 0D 0A 1A 0A`) — Maximum 5 MB per image.
+     - **WEBP** (`RIFF....WEBP`) — Maximum 5 MB per image.
+     - **PDF** (`%PDF` / `25 50 44 46`) — Maximum 10 MB per document.
+   - Executables (`MZ`, `ELF`) and script tags (`<script`, `<?php`, `<html>`) are rejected immediately.
+
+2. **Private Storage Vault (`ambika-submissions`)**:
+   - The Supabase Storage bucket is marked `public = false`.
+   - Files are stored with cryptographically generated UUID paths (`submissions/YYYY-MM/<uuid>.<ext>`). User-supplied filenames are never used in storage paths.
+   - Files can only be downloaded or previewed by authenticated administrators through **short-lived signed URLs** (valid for 60 seconds).
+
+3. **Row Level Security (RLS)**:
+   - Tables `submissions` and `submission_files` reject all anonymous direct reads, inserts, updates, and deletes.
+   - Public submissions are processed exclusively through the secure Supabase Edge Function (`submit-upload`), which validates inputs, checks honeypots, rate-limits requests, and performs atomic insertion.
+   - Only verified administrators in `public.admin_users` can view submissions or generate signed access links.
+
+4. **Rate Limiting & Spam Protection**:
+   - Anti-bot invisible honeypot field.
+   - Cloudflare Turnstile CAPTCHA integration.
+   - IP-based rate limiting (maximum 10 submissions per 10 minutes per IP).
+
+---
+
+### 🚀 Step-by-Step Backend Setup (Supabase)
+
+#### Step 1: Create a Supabase Project
+1. Log in to [Supabase](https://supabase.com) and click **New Project**.
+2. Name your project (e.g., `ambika-school-vault`) and set a strong database password.
+3. Select your preferred region (e.g., `ap-south-1` Mumbai for India).
+
+#### Step 2: Run Database Migration
+1. In the Supabase Dashboard, go to the **SQL Editor**.
+2. Open `supabase/migrations/20261111_init_submissions.sql` from this repository.
+3. Paste the contents into the SQL Editor and click **Run**.
+4. This automatically creates:
+   - `submissions` table
+   - `submission_files` table
+   - `admin_users` table
+   - `rate_limits` table
+   - `submission_ref_seq` (generating references like `AMB-2026-00001`)
+   - Private bucket `ambika-submissions`
+   - Strict Row Level Security policies
+
+#### Step 3: Create and Enroll School Administrator
+1. In the Supabase Dashboard, navigate to **Authentication** &rarr; **Users** &rarr; **Add User** (Create User).
+2. Enter the administrator's official email (e.g., `admin@ambikaschool.in`) and a secure password.
+3. Go back to the **SQL Editor** and run:
+   ```sql
+   SELECT public.enroll_admin('admin@ambikaschool.in', 'School Principal / Head Admin');
+   ```
+
+#### Step 4: Deploy Supabase Edge Functions
+Make sure the [Supabase CLI](https://supabase.com/docs/guides/cli) is installed or deploy via GitHub Actions:
+```bash
+# Login to Supabase CLI
+supabase login
+
+# Link your local project
+supabase link --project-ref <your-supabase-project-id>
+
+# Deploy the Edge Functions
+supabase functions deploy submit-upload --no-verify-jwt
+supabase functions deploy admin-actions
+```
+
+#### Step 5: Set Environment Secrets in Supabase
+In Supabase Dashboard &rarr; **Settings** &rarr; **Edge Functions** (or via CLI):
+```bash
+# Secrets are managed safely on the server side
+supabase secrets set IP_SALT="your-custom-salt-string"
+# If using Cloudflare Turnstile:
+supabase secrets set TURNSTILE_SECRET_KEY="0x4AAAAAA..."
+```
+*(Note: `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are provided automatically to Edge Functions by Supabase).*
+
+#### Step 6: Configure Frontend (`assets/js/config.js`)
+Edit `assets/js/config.js` and set:
+```javascript
+window.AMBIKA_CONFIG = {
+  SUPABASE_URL: 'https://<your-project-id>.supabase.co',
+  SUPABASE_ANON_KEY: '<your-supabase-anon-public-key>',
+  TURNSTILE_SITE_KEY: '<optional-cloudflare-turnstile-site-key>',
+  ...
+};
+```
+*(Note: Only the **public anon key** is placed in `config.js`. The **service_role key** must NEVER be placed in client-side code).*
+
+---
+
+### 🛡️ Child Safety & Data Retention Policy
+
+- **Parent/Guardian Consent**: Explicit consent is required before submitting any student photography or identifiable student records.
+- **Access Control**: Only authorized school faculty assigned the `admin` role in `admin_users` can view submitted files.
+- **Public Concealment**: No submitted student photos or documents are ever published to the public website without separate administrative review and parental clearance.
+- **Data Deletion / Correction**: Parents or guardians can request modification or complete deletion of submitted records by contacting `privacy.ambikaschool@gmail.com`.
+
+---
+
 ## 📱 Browser & Device Support
 
 - **Desktop:** Chrome, Edge, Safari, Firefox, Opera (Full HD, 2K, 4K).

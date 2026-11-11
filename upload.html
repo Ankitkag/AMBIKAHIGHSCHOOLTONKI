@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ambika Digital Submission Portal | Ambika High School Tonki</title>
+  <meta name="description" content="Official secure file and photograph upload portal for Ambika High School Tonki, Madhya Pradesh. Private, verified submissions for student projects, homework, and certificates." />
+  <meta property="og:title" content="Ambika Digital Submission Portal | Ambika High School Tonki" />
+  <meta property="og:description" content="Securely submit student photos and PDF documents directly to Ambika High School administration." />
+  <meta property="og:type" content="website" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet" />
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/upload.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION BAR
+  ============================================================ -->
+  <nav id="navbar" class="scrolled">
+    <div class="nav-container">
+      <!-- Logo -->
+      <a href="index.html#home" class="nav-logo" aria-label="Ambika High School Tonki Home">
+        <img src="assets/images/logo.png" alt="Ambika High School Tonki Logo" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <span class="logo-fallback" style="display:none;">AHS</span>
+        <div class="logo-text">
+          <span class="school-name-en" data-en="AMBIKA HIGH SCHOOL TONKI" data-hi="अंबिका हाई स्कूल टोंकी">AMBIKA HIGH SCHOOL TONKI</span>
+          <span class="school-name-hi" style="display:none;" data-en="AMBIKA HIGH SCHOOL TONKI" data-hi="अंबिका हाई स्कूल टोंकी">अंबिका हाई स्कूल टोंकी</span>
+          <span class="school-tagline" data-en="Learn Today. Lead Tomorrow." data-hi="आज सीखें, कल नेतृत्व करें।">Learn Today. Lead Tomorrow.</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <ul class="nav-links nav-menu" id="navLinks">
+        <li><a href="index.html#home" class="nav-link" data-en="Home" data-hi="घर">Home</a></li>
+        <li><a href="index.html#about" class="nav-link" data-en="About Us" data-hi="हमारे बारे में">About Us</a></li>
+        <li><a href="index.html#academics" class="nav-link" data-en="Academics" data-hi="शिक्षा">Academics</a></li>
+        <li><a href="index.html#school-life" class="nav-link" data-en="School Life" data-hi="स्कूल जीवन">School Life</a></li>
+        <li class="nav-dropdown has-dropdown">
+          <a href="index.html#gallery" class="nav-link dropdown-toggle"><span data-en="Gallery" data-hi="गैलरी">Gallery</span> <span class="dropdown-arrow">▾</span></a>
+          <ul class="dropdown-menu nav-dropdown-menu">
+            <li><a href="index.html#photo-gallery" class="dropdown-item" data-en="Photo Gallery" data-hi="फोटो गैलरी">Photo Gallery</a></li>
+            <li><a href="index.html#video-gallery" class="dropdown-item" data-en="Video Gallery" data-hi="वीडियो गैलरी">Video Gallery</a></li>
+          </ul>
+        </li>
+        <li><a href="upload.html" class="nav-link active" data-en="Upload Portal" data-hi="अपलोड पोर्टल">Upload Portal</a></li>
+        <li><a href="index.html#contact" class="nav-link" data-en="Contact Us" data-hi="संपर्क करें">Contact Us</a></li>
+      </ul>
+
+      <!-- Right Controls -->
+      <div class="nav-controls">
+        <button id="langToggle" class="lang-toggle" aria-label="Toggle Language">
+          <span class="lang-icon">🌐</span>
+          <span class="lang-label-en">English</span>
+          <span class="lang-sep"> | </span>
+          <span class="lang-label-hi">हिंदी</span>
+        </button>
+        <a href="admin-submissions.html" class="btn btn-secondary nav-cta" style="padding: 10px 18px; font-size: 0.8125rem;" data-en="Admin Portal" data-hi="व्यवस्थापक पोर्टल">Admin Portal</a>
+        <!-- Hamburger -->
+        <button class="hamburger" id="hamburger" aria-label="Open Menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       PORTAL MAIN CONTENT
+  ============================================================ -->
+  <main class="portal-page">
+    <div class="portal-container">
+
+      <!-- Hero Banner -->
+      <div class="portal-hero">
+        <div class="portal-hero-inner">
+          <div class="portal-badge" data-en="Tonki, M.P. &bull; Official Digital Vault" data-hi="टोंकी, म.प्र. &bull; आधिकारिक डिजिटल वॉल्ट">Tonki, M.P. &bull; Official Digital Vault</div>
+          <h1 class="portal-title" data-en="Ambika Digital Submission Portal" data-hi="अंबिका डिजिटल सबमिशन पोर्टल">Ambika Digital Submission Portal</h1>
+          <p class="portal-subtitle" data-en="Securely submit student projects, homework, photographs, and academic certificates directly to school administrators. No login required for public submissions." data-hi="छात्र परियोजनाओं, गृहकार्य, तस्वीरों और शैक्षणिक प्रमाणपत्रों को सीधे स्कूल प्रशासन को सुरक्षित रूप से जमा करें।">
+            Securely submit student projects, homework, photographs, and academic certificates directly to school administrators. No login required for public submissions.
+          </p>
+          <div class="portal-security-tags">
+            <span class="security-tag"><span>🔒</span> <span data-en="Private Encrypted Storage" data-hi="निजी एन्क्रिप्टेड स्टोरेज">Private Encrypted Storage</span></span>
+            <span class="security-tag"><span>🛡️</span> <span data-en="Binary Magic-Byte Validated" data-hi="बाइनरी सत्यापन सुरक्षित">Binary Magic-Byte Validated</span></span>
+            <span class="security-tag"><span>👁️</span> <span data-en="Admin-Only Access" data-hi="केवल प्रशासक पहुंच">Admin-Only Access</span></span>
+            <span class="security-tag"><span>📜</span> <span data-en="Child Privacy Compliant" data-hi="बाल सुरक्षा नीति अनुरूप">Child Privacy Compliant</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Form Card -->
+      <div class="portal-card" id="formContainer">
+
+        <form id="submissionForm" novalidate autocomplete="off">
+          <!-- Honeypot for Anti-Bot protection -->
+          <input type="text" id="hpField" name="hp_field" style="display:none;" tabindex="-1" autocomplete="off" />
+
+          <!-- Step 1: Submitter & Student Info -->
+          <div class="portal-section-header">
+            <h2>
+              <span class="step-badge">1</span>
+              <span data-en="Student & Submitter Details" data-hi="विद्यार्थी और जमाकर्ता विवरण">Student & Submitter Details</span>
+            </h2>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fullName">
+                <span data-en="Your Full Name (Submitter) *" data-hi="आपका पूरा नाम (जमाकर्ता) *">Your Full Name (Submitter) *</span>
+              </label>
+              <input type="text" id="fullName" name="full_name" required maxlength="120"
+                     placeholder="e.g. Ramesh Patel / Sunita Sharma"
+                     data-placeholder-en="e.g. Ramesh Patel / Sunita Sharma"
+                     data-placeholder-hi="उदा. रमेश पटेल / सुनीता शर्मा" />
+            </div>
+
+            <div class="form-group">
+              <label for="studentName">
+                <span data-en="Student Name (If applicable)" data-hi="विद्यार्थी का नाम (यदि लागू हो)">Student Name (If applicable)</span>
+              </label>
+              <input type="text" id="studentName" name="student_name" maxlength="120"
+                     placeholder="e.g. Aarav Patel"
+                     data-placeholder-en="e.g. Aarav Patel"
+                     data-placeholder-hi="उदा. आरव पटेल" />
+            </div>
+          </div>
+
+          <div class="form-row" style="margin-top: 14px;">
+            <div class="form-group">
+              <label for="className">
+                <span data-en="Class / Grade" data-hi="कक्षा">Class / Grade</span>
+              </label>
+              <select id="className" name="class_name">
+                <option value="" data-en="-- Select Class (Optional) --" data-hi="-- कक्षा चुनें (वैकल्पिक) --">-- Select Class (Optional) --</option>
+                <option value="Nursery">Nursery</option>
+                <option value="LKG">LKG</option>
+                <option value="UKG">UKG</option>
+                <option value="Class 1">Class 1 (कक्षा 1)</option>
+                <option value="Class 2">Class 2 (कक्षा 2)</option>
+                <option value="Class 3">Class 3 (कक्षा 3)</option>
+                <option value="Class 4">Class 4 (कक्षा 4)</option>
+                <option value="Class 5">Class 5 (कक्षा 5)</option>
+                <option value="Class 6">Class 6 (कक्षा 6)</option>
+                <option value="Class 7">Class 7 (कक्षा 7)</option>
+                <option value="Class 8">Class 8 (कक्षा 8)</option>
+                <option value="Class 9">Class 9 (कक्षा 9)</option>
+                <option value="Class 10">Class 10 (कक्षा 10)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="scholarNumber">
+                <span data-en="Scholar Number / Roll No." data-hi="विद्वान संख्या / रोल नंबर">Scholar Number / Roll No.</span>
+              </label>
+              <input type="text" id="scholarNumber" name="scholar_number" maxlength="40"
+                     placeholder="e.g. AHS-2023-118"
+                     data-placeholder-en="e.g. AHS-2023-118"
+                     data-placeholder-hi="उदा. AHS-2023-118" />
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-top: 14px;">
+            <label for="category">
+              <span data-en="Submission Category *" data-hi="सबमिशन श्रेणी *">Submission Category *</span>
+            </label>
+            <select id="category" name="category" required>
+              <option value="" data-en="-- Select Category --" data-hi="-- श्रेणी चुनें --">-- Select Category --</option>
+              <option value="Student Project" data-en="Student Project" data-hi="छात्र प्रोजेक्ट / मॉडल">Student Project</option>
+              <option value="Homework" data-en="Homework / Assignment" data-hi="गृहकार्य / असाइनमेंट">Homework / Assignment</option>
+              <option value="School Activity" data-en="School Activity / Sports Event" data-hi="स्कूल गतिविधि / खेलकूद">School Activity / Sports Event</option>
+              <option value="Student Photograph" data-en="Student Photograph (ID / Event)" data-hi="विद्यार्थी की तस्वीर (आईडी / कार्यक्रम)">Student Photograph (ID / Event)</option>
+              <option value="Certificate" data-en="Certificate / Achievement Award" data-hi="प्रमाणपत्र / उपलब्धि">Certificate / Achievement Award</option>
+              <option value="Other" data-en="Other Official Document" data-hi="अन्य आधिकारिक दस्तावेज">Other Official Document</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-top: 14px;">
+            <label for="description">
+              <span data-en="Description / Notes (Optional)" data-hi="विवरण / टिप्पणी (वैकल्पिक)">Description / Notes (Optional)</span>
+            </label>
+            <textarea id="description" name="description" rows="3" maxlength="1500"
+                      placeholder="Briefly describe what you are submitting, topic name, or any instructions for teachers..."
+                      data-placeholder-en="Briefly describe what you are submitting, topic name, or any instructions for teachers..."
+                      data-placeholder-hi="आप क्या जमा कर रहे हैं, विषय का नाम या शिक्षकों के लिए कोई निर्देश संक्षेप में लिखें..."></textarea>
+          </div>
+
+          <!-- Step 2: File Upload Zone -->
+          <div class="portal-section-header" style="margin-top: 36px;">
+            <h2>
+              <span class="step-badge">2</span>
+              <span data-en="Attach Files & Documents" data-hi="फाइलें और दस्तावेज संलग्न करें">Attach Files & Documents</span>
+            </h2>
+          </div>
+
+          <div class="dropzone-container">
+            <div class="upload-dropzone" id="dropzone" tabindex="0" role="button" aria-label="Upload files drop area">
+              <div class="dropzone-icon">📁</div>
+              <div class="dropzone-text-main" data-en="Drag & Drop files here, or Click to Browse" data-hi="फ़ाइलों को यहाँ खींचें और छोड़ें, या चुनने के लिए क्लिक करें">
+                Drag &amp; Drop files here, or Click to Browse
+              </div>
+              <div class="dropzone-text-sub" data-en="Supports smartphone camera capture & gallery uploads" data-hi="स्मार्टफोन कैमरा और गैलरी फोटो का समर्थन करता है">
+                Supports smartphone camera capture &amp; gallery uploads
+              </div>
+              <div class="dropzone-limits-pills">
+                <span class="limit-pill" data-en="Up to 5 files" data-hi="अधिकतम 5 फाइलें">Up to 5 files</span>
+                <span class="limit-pill" data-en="JPG, PNG, WEBP &le; 5 MB" data-hi="JPG, PNG, WEBP &le; 5 MB">JPG, PNG, WEBP &le; 5 MB</span>
+                <span class="limit-pill" data-en="PDF &le; 10 MB" data-hi="PDF &le; 10 MB">PDF &le; 10 MB</span>
+              </div>
+              <input type="file" id="fileInput" class="file-input-hidden" multiple
+                     accept="image/jpeg,image/png,image/webp,application/pdf" />
+            </div>
+
+            <!-- Preview of Selected Files -->
+            <div class="file-preview-list" id="filePreviewList" style="display: none;"></div>
+          </div>
+
+          <!-- Step 3: Consent & Privacy Notice -->
+          <div class="consent-box">
+            <label class="consent-checkbox-wrap" for="consentCheck">
+              <input type="checkbox" id="consentCheck" name="consent" required />
+              <span class="consent-text" data-en="I confirm that I am a parent, legal guardian, or authorized student, and I grant consent to Ambika High School Tonki to securely process and store this file/photograph for official academic records and school verification."
+                    data-hi="मैं पुष्टि करता/करती हूँ कि मैं एक अभिभावक या अधिकृत छात्र हूँ, और मैं अंबिका हाई स्कूल टोंकी को इस फ़ाइल/फ़ोटो को आधिकारिक शैक्षणिक रिकॉर्ड के लिए सुरक्षित रूप से संग्रहीत करने की सहमति देता/देती हूँ।">
+                I confirm that I am a parent, legal guardian, or authorized student, and I grant consent to Ambika High School Tonki to securely process and store this file/photograph for official academic records and school verification.
+              </span>
+            </label>
+            <div class="child-privacy-note">
+              <span class="child-privacy-note-icon">🛡️</span>
+              <span data-en="Child Safety & Privacy: Uploaded files are strictly stored in private encrypted storage and will never be shared publicly or indexed by search engines. To request modification or deletion, contact our privacy officer at privacy.ambikaschool@gmail.com."
+                    data-hi="बाल सुरक्षा व गोपनीयता: अपलोड की गई फाइलें केवल निजी एन्क्रिप्टेड स्टोरेज में रखी जाती हैं और कभी भी सार्वजनिक रूप से साझा नहीं की जाती हैं। हटाने के अनुरोध के लिए privacy.ambikaschool@gmail.com पर संपर्क करें।">
+                Child Safety &amp; Privacy: Uploaded files are strictly stored in private encrypted storage and will never be shared publicly or indexed by search engines. To request modification or deletion, contact our privacy officer at privacy.ambikaschool@gmail.com.
+              </span>
+            </div>
+          </div>
+
+          <!-- Turnstile CAPTCHA container (if configured) -->
+          <div id="turnstileContainer" style="margin-bottom: 20px; display: flex; justify-content: center;"></div>
+
+          <!-- Progress Bar -->
+          <div class="upload-progress-container" id="uploadProgress">
+            <div class="progress-label-row">
+              <span data-en="Encrypting and uploading files..." data-hi="फाइलें एन्क्रिप्ट और अपलोड की जा रही हैं...">Encrypting and uploading files...</span>
+              <span id="progressPercent">0%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn-upload-submit" id="submitBtn">
+            <span class="spinner" aria-hidden="true"></span>
+            <span class="btn-text" data-en="Submit Files Securely" data-hi="फाइलें सुरक्षित रूप से जमा करें">Submit Files Securely</span>
+          </button>
+        </form>
+
+      </div>
+
+      <!-- Success Screen -->
+      <div class="portal-card submission-success-view" id="submissionSuccessView">
+        <div class="success-icon-wrap">✓</div>
+        <h2 class="success-title" data-en="Files Submitted Successfully!" data-hi="फाइलें सफलतापूर्वक जमा हो गईं!">Files Submitted Successfully!</h2>
+        <p class="success-subtitle" data-en="Your files have been received by the Ambika High School administration and stored in the secure school vault." data-hi="आपकी फाइलें अंबिका हाई स्कूल प्रशासन द्वारा प्राप्त कर ली गई हैं और सुरक्षित स्कूल वॉल्ट में दर्ज कर दी गई हैं।">
+          Your files have been received by the Ambika High School administration and stored in the secure school vault.
+        </p>
+
+        <div class="reference-card">
+          <div class="reference-label" data-en="Your Submission Reference Number" data-hi="आपकी सबमिशन संदर्भ संख्या">Your Submission Reference Number</div>
+          <div class="reference-number" id="refNumberDisplay">AMB-2026-00000</div>
+          <button type="button" class="btn-copy-ref" id="copyRefBtn">
+            <span>📋</span> <span data-en="Copy Reference" data-hi="कॉपी करें">Copy Reference</span>
+          </button>
+        </div>
+
+        <p class="success-meta-note" data-en="Please save this reference number for any future enquiries or verification with your class teacher or the school office." data-hi="कृपया कक्षा शिक्षक या स्कूल कार्यालय से किसी भी पूछताछ या सत्यापन के लिए इस संदर्भ संख्या को सुरक्षित रखें।">
+          Please save this reference number for any future enquiries or verification with your class teacher or the school office.
+        </p>
+
+        <button type="button" class="btn-submit-another" id="submitAnotherBtn">
+          <span>+</span> <span data-en="Submit Another File" data-hi="एक और फ़ाइल जमा करें">Submit Another File</span>
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer id="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+
+        <!-- School Identity Column -->
+        <div class="footer-col footer-brand">
+          <div class="footer-logo">
+            <img src="assets/images/logo.png" alt="Ambika High School Tonki Crest" class="footer-logo-img" onerror="this.style.display='none'" />
+            <div>
+              <h3 class="footer-school-name" data-en="AMBIKA HIGH SCHOOL TONKI" data-hi="अंबिका हाई स्कूल टोंकी">AMBIKA HIGH SCHOOL TONKI</h3>
+              <p class="footer-motto" data-en="Learn Today. Lead Tomorrow." data-hi="आज सीखें, कल नेतृत्व करें।">Learn Today. Lead Tomorrow.</p>
+            </div>
+          </div>
+          <p class="footer-desc" data-en="Ambika Digital Submission Portal provides parents and students with a verified, confidential channel for submitting academic work and student records." data-hi="अंबिका डिजिटल सबमिशन पोर्टल माता-पिता और छात्रों को शैक्षणिक कार्य और रिकॉर्ड जमा करने के लिए एक सत्यापित, गोपनीय चैनल प्रदान करता है।">
+            Ambika Digital Submission Portal provides parents and students with a verified, confidential channel for submitting academic work and student records.
+          </p>
+        </div>
+
+        <!-- Quick Links Column -->
+        <div class="footer-col">
+          <h4 class="footer-col-title" data-en="Quick Links" data-hi="त्वरित लिंक">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#home" data-en="Home" data-hi="घर">Home</a></li>
+            <li><a href="index.html#about" data-en="About Us" data-hi="हमारे बारे में">About Us</a></li>
+            <li><a href="index.html#academics" data-en="Academics" data-hi="शिक्षा">Academics</a></li>
+            <li><a href="index.html#school-life" data-en="School Life" data-hi="स्कूल जीवन">School Life</a></li>
+            <li><a href="upload.html" data-en="Upload Portal" data-hi="अपलोड पोर्टल">Upload Portal</a></li>
+            <li><a href="admin-submissions.html" data-en="Admin Portal" data-hi="व्यवस्थापक पोर्टल">Admin Portal</a></li>
+            <li><a href="index.html#contact" data-en="Contact Us" data-hi="संपर्क करें">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Academic Info Column -->
+        <div class="footer-col">
+          <h4 class="footer-col-title" data-en="Academic Info" data-hi="शैक्षणिक जानकारी">Academic Info</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#academics" data-en="Nursery to Class 6 (English Medium)" data-hi="नर्सरी से कक्षा 6 (अंग्रेज़ी माध्यम)">Nursery to Class 6 (English Medium)</a></li>
+            <li><a href="index.html#academics" data-en="Class 7 to Class 10 (Hindi Medium)" data-hi="कक्षा 7 से कक्षा 10 (हिंदी माध्यम)">Class 7 to Class 10 (Hindi Medium)</a></li>
+            <li><a href="index.html#about" data-en="School Facilities" data-hi="स्कूल सुविधाएं">School Facilities</a></li>
+            <li><a href="index.html#contact" data-en="Admission Enquiry" data-hi="प्रवेश पूछताछ">Admission Enquiry</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info Column -->
+        <div class="footer-col">
+          <h4 class="footer-col-title" data-en="Contact Info" data-hi="संपर्क जानकारी">Contact Info</h4>
+          <ul class="footer-contact-list">
+            <li>
+              <span class="fc-icon">📍</span>
+              <span data-en="Tonki, Teh. Manawar, Dist. Dhar, M.P., India" data-hi="टोंकी, तह. मनावर, जिला धार, म.प्र., भारत">Tonki, Teh. Manawar, Dist. Dhar, M.P., India</span>
+            </li>
+            <li>
+              <span class="fc-icon">📧</span>
+              <a href="mailto:privacy.ambikaschool@gmail.com">privacy.ambikaschool@gmail.com</a>
+            </li>
+            <li>
+              <span class="fc-icon">🕐</span>
+              <span data-en="Mon–Sat: 8:00 AM – 3:00 PM" data-hi="सोम–शनि: सुबह 8:00 – दोपहर 3:00">Mon–Sat: 8:00 AM – 3:00 PM</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p data-en="&copy; 2026 Ambika High School Tonki. All Rights Reserved." data-hi="&copy; 2026 अंबिका हाई स्कूल टोंकी। सर्वाधिकार सुरक्षित।">
+          &copy; 2026 Ambika High School Tonki. All Rights Reserved.
+        </p>
+        <p class="footer-made-with" data-en="Secure File Portal &bull; Ambika High School Tonki" data-hi="सुरक्षित फ़ाइल पोर्टल &bull; अंबिका हाई स्कूल टोंकी">
+          Secure File Portal &bull; Ambika High School Tonki
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/script.js"></script>
+  <script src="assets/js/upload.js"></script>
+</body>
+</html>

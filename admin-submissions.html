@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Submissions Portal | Ambika High School Tonki</title>
+  <meta name="description" content="Authorized administrative dashboard for reviewing and managing student photo and document submissions at Ambika High School Tonki." />
+  <meta name="robots" content="noindex, nofollow" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet" />
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/upload.css" />
+</head>
+<body class="admin-body">
+
+  <!-- ============================================================
+       NAVIGATION BAR
+  ============================================================ -->
+  <nav id="navbar" class="scrolled">
+    <div class="nav-container">
+      <a href="index.html#home" class="nav-logo" aria-label="Ambika High School Tonki Home">
+        <img src="assets/images/logo.png" alt="Ambika High School Tonki Logo" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <span class="logo-fallback" style="display:none;">AHS</span>
+        <div class="logo-text">
+          <span class="school-name-en" data-en="AMBIKA HIGH SCHOOL TONKI" data-hi="अंबिका हाई स्कूल टोंकी">AMBIKA HIGH SCHOOL TONKI</span>
+          <span class="school-name-hi" style="display:none;" data-en="AMBIKA HIGH SCHOOL TONKI" data-hi="अंबिका हाई स्कूल टोंकी">अंबिका हाई स्कूल टोंकी</span>
+          <span class="school-tagline" data-en="Admin Portal &bull; Learn Today. Lead Tomorrow." data-hi="प्रशासन पोर्टल &bull; आज सीखें, कल नेतृत्व करें।">Admin Portal &bull; Learn Today. Lead Tomorrow.</span>
+        </div>
+      </a>
+
+      <div class="nav-controls">
+        <button id="langToggle" class="lang-toggle" aria-label="Toggle Language">
+          <span class="lang-icon">🌐</span>
+          <span class="lang-label-en">English</span>
+          <span class="lang-sep"> | </span>
+          <span class="lang-label-hi">हिंदी</span>
+        </button>
+        <a href="upload.html" class="btn btn-primary nav-cta" style="padding: 10px 18px; font-size: 0.8125rem;" data-en="Public Upload Portal" data-hi="सार्वजनिक पोर्टल">Public Upload Portal</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       MAIN CONTENT: ADMIN VIEWS
+  ============================================================ -->
+  <main class="admin-page">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 16px;">
+
+      <!-- VIEW 1: ADMIN LOGIN SECTION -->
+      <section id="adminLoginSection" class="admin-login-wrap" style="display: none;">
+        <img src="assets/images/logo.png" alt="Ambika High School Crest" class="admin-login-logo" onerror="this.style.display='none'" />
+        <h2 class="admin-login-title" data-en="Administrator Sign In" data-hi="प्रशासक साइन इन">Administrator Sign In</h2>
+        <p class="admin-login-sub" data-en="Enter authorized school credentials to access submission records." data-hi="सबमिशन रिकॉर्ड देखने के लिए अधिकृत स्कूल क्रेडेंशियल दर्ज करें।">
+          Enter authorized school credentials to access submission records.
+        </p>
+
+        <form id="adminLoginForm">
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label for="adminEmail" data-en="Admin Email Address" data-hi="व्यवस्थापक ईमेल पता">Admin Email Address</label>
+            <input type="email" id="adminEmail" name="email" required placeholder="admin@ambikaschool.in" />
+          </div>
+
+          <div class="form-group" style="margin-bottom: 24px;">
+            <label for="adminPassword" data-en="Password" data-hi="पासवर्ड">Password</label>
+            <input type="password" id="adminPassword" name="password" required placeholder="••••••••••••" />
+          </div>
+
+          <button type="submit" id="adminLoginBtn" class="btn-upload-submit">
+            <span class="btn-text" data-en="Sign In to Portal" data-hi="पोर्टल में साइन इन करें">Sign In to Portal</span>
+          </button>
+
+          <p style="margin-top: 18px; font-size: 0.775rem; color: #6b7280; text-align: center;" data-en="Authorized access only. Session activity is cryptographically verified." data-hi="केवल अधिकृत पहुंच। सभी सत्र सत्यापित किए जाते हैं।">
+            Authorized access only. Session activity is cryptographically verified.
+          </p>
+        </form>
+      </section>
+
+      <!-- VIEW 2: ADMIN DASHBOARD SECTION -->
+      <section id="adminDashboardSection" style="display: none;">
+
+        <!-- Dashboard Top Header -->
+        <div class="admin-header-bar">
+          <div class="admin-header-left">
+            <h1 data-en="Submissions Management Dashboard" data-hi="सबमिशन प्रबंधन डैशबोर्ड">Submissions Management Dashboard</h1>
+            <p data-en="Review, verify, and securely download student files and project documents." data-hi="छात्र फ़ाइलों और प्रोजेक्ट दस्तावेजों की समीक्षा, सत्यापन और सुरक्षित डाउनलोड करें।">
+              Review, verify, and securely download student files and project documents.
+            </p>
+          </div>
+          <div class="admin-header-right">
+            <span class="admin-user-pill">
+              <span>👤</span> <span id="adminUserEmail">admin@ambikaschool.in</span>
+            </span>
+            <button id="adminRefreshBtn" class="btn-filter-reset" title="Refresh data">🔄 Refresh</button>
+            <button id="adminLogoutBtn" class="btn-admin-logout" data-en="Log Out" data-hi="लॉग आउट">Log Out</button>
+          </div>
+        </div>
+
+        <!-- Metric Stat Cards -->
+        <div class="admin-stats-grid">
+          <div class="admin-stat-card">
+            <div>
+              <div class="stat-card-title" data-en="Total Submissions" data-hi="कुल सबमिशन">Total Submissions</div>
+              <div class="stat-card-val" id="statTotal">0</div>
+            </div>
+            <div class="stat-card-icon">📁</div>
+          </div>
+
+          <div class="admin-stat-card stat-pending">
+            <div>
+              <div class="stat-card-title" data-en="Pending Review" data-hi="समीक्षा लंबित">Pending Review</div>
+              <div class="stat-card-val" id="statPending" style="color: #d97706;">0</div>
+            </div>
+            <div class="stat-card-icon">⏳</div>
+          </div>
+
+          <div class="admin-stat-card stat-approved">
+            <div>
+              <div class="stat-card-title" data-en="Approved" data-hi="स्वीकृत">Approved</div>
+              <div class="stat-card-val" id="statApproved" style="color: #059669;">0</div>
+            </div>
+            <div class="stat-card-icon">✅</div>
+          </div>
+
+          <div class="admin-stat-card stat-rejected">
+            <div>
+              <div class="stat-card-title" data-en="Rejected" data-hi="अस्वीकृत">Rejected</div>
+              <div class="stat-card-val" id="statRejected" style="color: #dc2626;">0</div>
+            </div>
+            <div class="stat-card-icon">❌</div>
+          </div>
+        </div>
+
+        <!-- Search and Filters Bar -->
+        <div class="admin-filter-bar">
+          <input type="text" id="adminSearchInput" class="filter-input"
+                 placeholder="Search student, submitter, ref #..."
+                 data-placeholder-en="Search student, submitter, ref #..."
+                 data-placeholder-hi="छात्र, जमाकर्ता, संदर्भ संख्या खोजें..." />
+
+          <select id="adminClassFilter" class="filter-select">
+            <option value="All" data-en="All Classes" data-hi="सभी कक्षाएं">All Classes</option>
+            <option value="Nursery">Nursery</option>
+            <option value="LKG">LKG</option>
+            <option value="UKG">UKG</option>
+            <option value="Class 1">Class 1</option>
+            <option value="Class 2">Class 2</option>
+            <option value="Class 3">Class 3</option>
+            <option value="Class 4">Class 4</option>
+            <option value="Class 5">Class 5</option>
+            <option value="Class 6">Class 6</option>
+            <option value="Class 7">Class 7</option>
+            <option value="Class 8">Class 8</option>
+            <option value="Class 9">Class 9</option>
+            <option value="Class 10">Class 10</option>
+          </select>
+
+          <select id="adminCategoryFilter" class="filter-select">
+            <option value="All" data-en="All Categories" data-hi="सभी श्रेणियां">All Categories</option>
+            <option value="Student Project" data-en="Student Project" data-hi="छात्र प्रोजेक्ट">Student Project</option>
+            <option value="Homework" data-en="Homework" data-hi="गृहकार्य">Homework</option>
+            <option value="School Activity" data-en="School Activity" data-hi="स्कूल गतिविधि">School Activity</option>
+            <option value="Student Photograph" data-en="Student Photograph" data-hi="विद्यार्थी की तस्वीर">Student Photograph</option>
+            <option value="Certificate" data-en="Certificate" data-hi="प्रमाणपत्र">Certificate</option>
+            <option value="Other" data-en="Other" data-hi="अन्य">Other</option>
+          </select>
+
+          <select id="adminStatusFilter" class="filter-select">
+            <option value="All" data-en="All Statuses" data-hi="सभी स्थितियां">All Statuses</option>
+            <option value="Pending" data-en="Pending" data-hi="लंबित">Pending</option>
+            <option value="Approved" data-en="Approved" data-hi="स्वीकृत">Approved</option>
+            <option value="Rejected" data-en="Rejected" data-hi="अस्वीकृत">Rejected</option>
+          </select>
+
+          <button id="adminResetFiltersBtn" class="btn-filter-reset" data-en="Reset Filters" data-hi="रीसेट करें">Reset Filters</button>
+        </div>
+
+        <!-- Submissions Table -->
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th data-en="Reference #" data-hi="संदर्भ संख्या">Reference #</th>
+                <th data-en="Date" data-hi="दिनांक">Date</th>
+                <th data-en="Submitter" data-hi="जमाकर्ता">Submitter</th>
+                <th data-en="Student (Class)" data-hi="विद्यार्थी (कक्षा)">Student (Class)</th>
+                <th data-en="Category" data-hi="श्रेणी">Category</th>
+                <th data-en="Files" data-hi="फाइलें">Files</th>
+                <th data-en="Status" data-hi="स्थिति">Status</th>
+                <th data-en="Actions" data-hi="कार्रवाई">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="submissionsTableBody"></tbody>
+          </table>
+
+          <!-- Empty State -->
+          <div id="tableEmptyState" class="table-empty-state" style="display: none;">
+            <div class="table-empty-icon">📂</div>
+            <h3 data-en="No submissions match your filters" data-hi="कोई सबमिशन आपके फ़िल्टर से मेल नहीं खाता">No submissions match your filters</h3>
+            <p data-en="Try resetting filters or checking back later." data-hi="फ़िल्टर रीसेट करके देखें।">Try resetting filters or checking back later.</p>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ============================================================
+       SUBMISSION DETAIL & FILE INSPECTION MODAL
+  ============================================================ -->
+  <div class="admin-modal-overlay" id="submissionDetailModal" role="dialog" aria-modal="true">
+    <div class="admin-modal-content">
+      <div class="modal-header">
+        <div>
+          <span style="font-size: 0.75rem; text-transform: uppercase; color: #6b7280; font-weight: 700;">Submission Reference</span>
+          <h3 id="modalRef" style="font-family: monospace; letter-spacing: 1px;">AMB-2026-00000</h3>
+        </div>
+        <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-meta-grid">
+          <div class="modal-meta-item">
+            <label data-en="Submitter Name" data-hi="जमाकर्ता का नाम">Submitter Name</label>
+            <span id="modalFullName">—</span>
+          </div>
+          <div class="modal-meta-item">
+            <label data-en="Student Name" data-hi="विद्यार्थी का नाम">Student Name</label>
+            <span id="modalStudentName">—</span>
+          </div>
+          <div class="modal-meta-item">
+            <label data-en="Class" data-hi="कक्षा">Class</label>
+            <span id="modalClass">—</span>
+          </div>
+          <div class="modal-meta-item">
+            <label data-en="Scholar Number" data-hi="विद्वान संख्या">Scholar Number</label>
+            <span id="modalScholar">—</span>
+          </div>
+          <div class="modal-meta-item">
+            <label data-en="Category" data-hi="श्रेणी">Category</label>
+            <span id="modalCategory">—</span>
+          </div>
+          <div class="modal-meta-item">
+            <label data-en="Submission Date" data-hi="जमा करने की तिथि">Submission Date</label>
+            <span id="modalDate">—</span>
+          </div>
+          <div class="modal-meta-item">
+            <label data-en="Current Status" data-hi="वर्तमान स्थिति">Current Status</label>
+            <span id="modalStatus">—</span>
+          </div>
+          <div class="modal-meta-item">
+            <label data-en="Parent Consent" data-hi="अभिभावक सहमति">Parent Consent</label>
+            <span id="modalConsent">—</span>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; font-size: 0.75rem; text-transform: uppercase; color: #6b7280; font-weight: 700; margin-bottom: 4px;" data-en="Description / Notes" data-hi="विवरण / टिप्पणी">Description / Notes</label>
+          <div id="modalDescription" style="background: #fafafc; padding: 14px; border-radius: 8px; font-size: 0.875rem; color: #374151; line-height: 1.5;"></div>
+        </div>
+
+        <!-- Files Section -->
+        <div class="modal-files-section">
+          <h4 data-en="Uploaded Files (Private Storage)" data-hi="अपलोड की गई फ़ाइलें (निजी वॉल्ट)">Uploaded Files (Private Storage)</h4>
+          <p style="font-size: 0.775rem; color: #6b7280; margin-bottom: 12px;" data-en="Files are secured in a private bucket. Clicking 'Secure 60s Link' generates a temporary signed URL that expires in 60 seconds." data-hi="फाइलें एक निजी वॉल्ट में सुरक्षित हैं। 'Secure 60s Link' पर क्लिक करने पर 60 सेकंड में समाप्त होने वाला एक अस्थायी लिंक मिलता है।">
+            Files are secured in a private bucket. Clicking 'Secure 60s Link' generates a temporary signed URL that expires in 60 seconds.
+          </p>
+          <div id="modalFilesList"></div>
+        </div>
+      </div>
+
+      <!-- Action Buttons in Modal Footer -->
+      <div class="modal-actions-footer">
+        <button type="button" class="btn-modal-delete" id="modalDeleteBtn" data-en="🗑️ Delete Submission" data-hi="🗑️ सबमिशन हटाएं">🗑️ Delete Submission</button>
+        <div class="status-actions-group">
+          <button type="button" class="btn-modal-reject" id="modalRejectBtn" data-en="Reject" data-hi="अस्वीकार करें">Reject</button>
+          <button type="button" class="btn-modal-approve" id="modalApproveBtn" data-en="Approve" data-hi="स्वीकार करें">Approve</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/script.js"></script>
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>
